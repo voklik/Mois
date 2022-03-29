@@ -1,5 +1,14 @@
 {
   "welcome": {
       "title": "Welcome to {{title}}"
+  },
+  
+  "menu": {
+    "search": "Search",
+    "destinations": "Destinations",
+    "tours": "Tours",
+    "lastminute": "Last minute",
+    "login": "Login",
+    "Signin": "Registration"
   }
 }

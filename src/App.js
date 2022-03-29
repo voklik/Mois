@@ -1,6 +1,5 @@
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
-import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
 import Toolbar from '@mui/material/Toolbar';
@@ -9,6 +8,7 @@ import Link from '@mui/material/Link';
 import GlobalStyles from '@mui/material/GlobalStyles';
 import Container from '@mui/material/Container';
 import { useTranslation } from 'react-i18next';
+import Navbar from './components/menu';
 
 const footers = [
   {
@@ -41,39 +41,14 @@ function Welcome()
     return <h1>{t('welcome.title', {title:'Travel Agency'})}</h1>
 }
 
-function LanguageBar(){
-  const {t, i18n} = useTranslation('common');
-  return (
-  <Container>
-  <Button onClick={() => i18n.changeLanguage('cs')}>cs</Button>
-  <Button onClick={() => i18n.changeLanguage('en')}>en</Button>
-  </Container>
-  )
-}
-
 function PricingContent() {
   return (
       <React.Fragment>
         <GlobalStyles styles={{ ul: { margin: 0, padding: 0, listStyle: 'none' } }} />
         <CssBaseline />
-        <AppBar
-            position="static"
-            color="default"
-            elevation={0}
-            sx={{ borderBottom: (theme) => `1px solid ${theme.palette.divider}` }}
-        >
-          <Toolbar sx={{ flexWrap: 'wrap' }}>
-            <Typography variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
-              Company name
-            </Typography>
-            <nav>
-            <Button href="#" variant="outlined" sx={{ my: 1, mx: 1.5 }}>
-              Login
-            </Button>
-            <LanguageBar></LanguageBar>
-            </nav>
-          </Toolbar>
-        </AppBar>
+        <Container disableGutters maxWidth="sm" sx={{ pt: 8, pb: 6 } }>
+        </Container>
+            <Navbar></Navbar>
         {/* Hero unit */}
         <Container disableGutters maxWidth="sm" component="main" sx={{ pt: 8, pb: 6 }}>
           <Typography

@@ -1,5 +1,14 @@
 {
   "welcome": {
       "title": "Vítejte na {{title}}"
+  },
+
+  "menu": {
+    "search": "Vyhledávač",
+    "destinations": "Destinace",
+    "tours": "Zájezdy",
+    "lastminute": "Last minute nabídky",
+    "login": "Přihlášení",
+    "signin": "Registrace"
   }
 }
