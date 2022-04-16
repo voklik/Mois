@@ -1,100 +1,25 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import CssBaseline from '@mui/material/CssBaseline';
-import Grid from '@mui/material/Grid';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Link from '@mui/material/Link';
-import GlobalStyles from '@mui/material/GlobalStyles';
-import Container from '@mui/material/Container';
-import { useTranslation } from 'react-i18next';
-import Navbar from './components/menu';
+import React, { Component } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-const footers = [
-  {
-    title: 'Trave Agency',
-    description: ['Team', 'History', 'Contact us', 'Locations'],
-  },
-  {
-    title: 'Features',
-    description: [
-      'Cool stuff',
-      'Random feature',
-      'Team feature',
-      'Developer stuff',
-      'Another one',
-    ],
-  },
-  {
-    title: 'Resources',
-    description: ['Resource', 'Resource name', 'Another resource', 'Final resource'],
-  },
-  {
-    title: 'Legal',
-    description: ['Privacy policy', 'Terms of use'],
-  },
-];
+import Login from './Login';
+import Home from './Home'
+import Layout from './components/Layout';
 
-function Welcome()
-{
-    const {t, i18n} = useTranslation('common');
-    return <h1>{t('welcome.title', {title:'Travel Agency'})}</h1>
+class App extends Component {
+
+    render() {
+        return (
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/login" element={<Login/>}/>
+                    <Route path="/" element={<Layout/>}>
+                        <Route path="" element={<Home/>}/>
+                        <Route path="index" element={<Home/>}/>
+                    </Route>
+                </Routes>
+            </BrowserRouter>);
+    }
+
 }
 
-function PricingContent() {
-  return (
-      <React.Fragment>
-        <GlobalStyles styles={{ ul: { margin: 0, padding: 0, listStyle: 'none' } }} />
-        <CssBaseline />
-        <Container disableGutters maxWidth="sm" sx={{ pt: 8, pb: 6 } }>
-        </Container>
-            <Navbar></Navbar>
-        {/* Hero unit */}
-        <Container disableGutters maxWidth="sm" component="main" sx={{ pt: 8, pb: 6 }}>
-          <Typography
-              component="h1"
-              variant="h4"
-              align="center"
-              color="text.primary"
-              gutterBottom
-          >
-           <Welcome></Welcome>
-          </Typography>
-          </Container>
-        {/* Footer */}
-        <Container
-            maxWidth="md"
-            component="footer"
-            sx={{
-              borderTop: (theme) => `1px solid ${theme.palette.divider}`,
-              mt: 8,
-              py: [3, 6],
-            }}
-        >
-          <Grid container spacing={4} justifyContent="space-evenly">
-            {footers.map((footer) => (
-                <Grid item xs={6} sm={3} key={footer.title}>
-                  <Typography variant="h6" color="text.primary" gutterBottom>
-                    {footer.title}
-                  </Typography>
-                  <ul>
-                    {footer.description.map((item) => (
-                        <li key={item}>
-                          <Link href="#" variant="subtitle1" color="text.secondary">
-                            {item}
-                          </Link>
-                        </li>
-                    ))}
-                  </ul>
-                </Grid>
-            ))}
-          </Grid>
-        </Container>
-        {/* End footer */}
-      </React.Fragment>
-  );
-}
-
-export default function Pricing() {
-  return <PricingContent />;
-}
+export default App;
