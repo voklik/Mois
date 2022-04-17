@@ -14,6 +14,7 @@ import Badge from '@mui/material/Badge';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
+import Link from "@mui/material/Link";
 
 const drawerWidth = 240;
 
@@ -98,13 +99,13 @@ function Layout() {
                             noWrap
                             sx={{ flexGrow: 1 }}
                         >
-                            Dashboard
+                            FimTravel Agency
                         </Typography>
-                        <IconButton color="inherit">
-                            <Badge badgeContent={4} color="secondary">
-                                <NotificationsIcon />
-                            </Badge>
-                        </IconButton>
+                        <Link>
+                            <Link href="/login" style={{ color: '#FFF' }}>
+                                Přihlášení / Registrace
+                            </Link>
+                        </Link>
                     </Toolbar>
                 </AppBar>
                 <Drawer variant="permanent" open={open}>

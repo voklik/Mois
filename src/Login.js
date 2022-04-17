@@ -18,7 +18,7 @@ import Copyright from './components/Copyright';
 class Login extends Component {
 
     componentDidMount() {
-        document.title = "Login | FimTravel";
+        document.title = "Přihlášení | FimTravel";
     }
 
     render() {
@@ -46,7 +46,7 @@ class Login extends Component {
                             <LockOutlinedIcon />
                         </Avatar>
                         <Typography component="h1" variant="h5">
-                            Sign in
+                            Přihlášení
                         </Typography>
                         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
                             <TextField
@@ -71,7 +71,7 @@ class Login extends Component {
                             />
                             <FormControlLabel
                                 control={<Checkbox value="remember" color="primary" />}
-                                label="Remember me"
+                                label="Zapamatovat si mě"
                             />
                             <Button
                                 type="submit"
@@ -79,17 +79,17 @@ class Login extends Component {
                                 variant="contained"
                                 sx={{ mt: 3, mb: 2 }}
                             >
-                                Sign In
+                                Přihlášení
                             </Button>
                             <Grid container>
                                 <Grid item xs>
-                                    <Link href="#" variant="body2">
-                                        Forgot password?
+                                    <Link href="/" variant="body2">
+                                        Zpět
                                     </Link>
                                 </Grid>
                                 <Grid item>
-                                    <Link href="#" variant="body2">
-                                        {"Don't have an account? Sign Up"}
+                                    <Link href="/register" variant="body2">
+                                        {"Nemáte účet? Registrace"}
                                     </Link>
                                 </Grid>
                             </Grid>

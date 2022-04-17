@@ -7,8 +7,8 @@ class Copyright extends Component {
     render() {
         return (
             <Typography variant="body2" color="text.secondary" align="center" {...this.props}>
-                {'Copyright © '}
-                <Link color="inherit" href="https://mui.com/">
+                {'SPHH© '}
+                <Link color="inherit" href="/">
                     FimTravel Agency
                 </Link>{' '}
                 {new Date().getFullYear()}
