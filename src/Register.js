@@ -28,6 +28,19 @@ class Login extends Component {
             event.preventDefault();
             const data = new FormData(event.currentTarget);
 
+            const object = {};
+            data.forEach((value, key) => {
+                object[key] = value;
+            });
+
+            const requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(object)
+            };
+
+            fetch("http://localhost:8080/rest/api/auth/signup", requestOptions)
+                .then(response => console.log(response));
         };
 
         return (
@@ -49,8 +62,35 @@ class Login extends Component {
                             Registrace
                         </Typography>
                         <Box component="form" onSubmit={handleSubmit} noValidate >
-                            <Grid container sx={{ mt: 1 }}>
-                                <Grid item xs>
+
+
+                            <Grid container>
+                                <Grid container spacing={1} >
+                                    <Grid item md={5}>
+                                        <TextField
+                                            margin="normal"
+                                            required
+                                            fullWidth
+                                            id="firstName"
+                                            label="First name"
+                                            name="firstName"
+                                            autoComplete="firstName"
+                                            autoFocus
+                                        />
+                                    </Grid>
+                                    <Grid item md={7}>
+                                        <TextField
+                                            margin="normal"
+                                            required
+                                            fullWidth
+                                            id="lastName"
+                                            label="Last name"
+                                            name="lastName"
+                                            autoComplete="lastName"
+                                        />
+                                    </Grid>
+                                </Grid>
+                                <Grid item md={12}>
                                     <TextField
                                         margin="normal"
                                         required
@@ -59,95 +99,77 @@ class Login extends Component {
                                         label="Email"
                                         name="email"
                                         autoComplete="email"
-                                        autoFocus
                                     />
                                 </Grid>
-                                <Grid item xs>
+                                <Grid item md={12}>
                                     <TextField
                                         margin="normal"
                                         required
                                         fullWidth
                                         id="phoneNumber"
-                                        label="Tel. číslo"
+                                        label="Phone number"
                                         name="phoneNumber"
                                         autoComplete="phoneNumber"
-                                        autoFocus
                                     />
                                 </Grid>
-                                    <TextField
-                                        margin="normal"
-                                        required
-                                        fullWidth
-                                        id="firstName"
-                                        label="Jméno"
-                                        name="firstName"
-                                        autoComplete="firstName"
-                                        autoFocus
-                                    />
-                                    <TextField
-                                        margin="normal"
-                                        required
-                                        fullWidth
-                                        id="lastName"
-                                        label="Příjmení"
-                                        name="lastName"
-                                        autoComplete="lastName"
-                                        autoFocus
-                                    />
-                                    <TextField
-                                        margin="normal"
-                                        required
-                                        fullWidth
-                                        id="city"
-                                        label="Město"
-                                        name="city"
-                                        autoComplete="city"
-                                        autoFocus
-                                    />
+                                <Grid container spacing={1}>
+                                    <Grid item md={4}>
+                                        <TextField
+                                            margin="normal"
+                                            required
+                                            fullWidth
+                                            id="postCode"
+                                            label="Post code"
+                                            name="postCode"
+                                            autoComplete="postCode"
+                                        />
+                                    </Grid>
+                                    <Grid item md={8}>
+                                        <TextField
+                                            margin="normal"
+                                            required
+                                            fullWidth
+                                            id="city"
+                                            label="City"
+                                            name="city"
+                                            autoComplete="city"
+                                        />
+                                    </Grid>
                                 </Grid>
-                                <Grid item>
-                                    <TextField
-                                        margin="normal"
-                                        required
-                                        fullWidth
-                                        id="postCode"
-                                        label="PSČ"
-                                        name="postCode"
-                                        autoComplete="postCode"
-                                        autoFocus
-                                    />
+                                <Grid item md={12}>
                                     <TextField
                                         margin="normal"
                                         required
                                         fullWidth
                                         id="street"
-                                        label="Ulice"
+                                        label="Street"
                                         name="street"
                                         autoComplete="street"
-                                        autoFocus
                                     />
+                                </Grid>
+                                <Grid item md={12}>
                                     <TextField
                                         margin="normal"
+                                        type="password"
                                         required
                                         fullWidth
-                                        name="password"
-                                        label="Heslo"
-                                        type="password"
                                         id="password"
-                                        autoComplete="current-password"
+                                        label="Password"
+                                        name="password"
                                     />
+                                </Grid>
+                                <Grid item md={12}>
                                     <TextField
                                         margin="normal"
+                                        type="password"
                                         required
                                         fullWidth
                                         id="confirmPassword"
-                                        label="Zopakovat heslo"
+                                        label="Confirm password"
                                         name="confirmPassword"
-                                        autoComplete="confirmPassword"
-                                        autoFocus
                                     />
                                 </Grid>
-
+                            </Grid>
                             <FormControlLabel
                                 control={<Checkbox required color="primary" />}
                                 label="Kliknutím zde potvrzuji, že jsem byl seznámen/a a souhlasím s pravidly a podmínkami."
