@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -11,7 +11,7 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import {createTheme, ThemeProvider} from '@mui/material/styles';
 
 import Copyright from './components/Copyright';
 
@@ -27,13 +27,26 @@ class Login extends Component {
         const handleSubmit = (event) => {
             event.preventDefault();
             const data = new FormData(event.currentTarget);
-            
+
+            const object = {};
+            data.forEach((value, key) => {
+                object[key] = value;
+            });
+
+            const requestOptions = {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(object)
+            };
+
+            fetch("http://localhost:8080/rest/api/auth/signin", requestOptions)
+                .then(response => console.log(response));
         };
 
         return (
             <ThemeProvider theme={theme}>
                 <Container component="main" maxWidth="xs">
-                    <CssBaseline />
+                    <CssBaseline/>
                     <Box
                         sx={{
                             marginTop: 8,
@@ -42,20 +55,20 @@ class Login extends Component {
                             alignItems: 'center',
                         }}
                     >
-                        <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-                            <LockOutlinedIcon />
+                        <Avatar sx={{m: 1, bgcolor: 'secondary.main'}}>
+                            <LockOutlinedIcon/>
                         </Avatar>
                         <Typography component="h1" variant="h5">
                             Přihlášení
                         </Typography>
-                        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+                        <Box component="form" onSubmit={handleSubmit} noValidate sx={{mt: 1}}>
                             <TextField
                                 margin="normal"
                                 required
                                 fullWidth
-                                id="email"
-                                label="Email Address"
-                                name="email"
+                                id="username"
+                                label="Email"
+                                name="username"
                                 autoComplete="email"
                                 autoFocus
                             />
@@ -64,20 +77,20 @@ class Login extends Component {
                                 required
                                 fullWidth
                                 name="password"
-                                label="Password"
+                                label="Heslo"
                                 type="password"
                                 id="password"
                                 autoComplete="current-password"
                             />
                             <FormControlLabel
-                                control={<Checkbox value="remember" color="primary" />}
+                                control={<Checkbox value="remember" color="primary"/>}
                                 label="Zapamatovat si mě"
                             />
                             <Button
                                 type="submit"
                                 fullWidth
                                 variant="contained"
-                                sx={{ mt: 3, mb: 2 }}
+                                sx={{mt: 3, mb: 2}}
                             >
                                 Přihlášení
                             </Button>
@@ -95,7 +108,7 @@ class Login extends Component {
                             </Grid>
                         </Box>
                     </Box>
-                    <Copyright sx={{ mt: 8, mb: 4 }} />
+                    <Copyright sx={{mt: 8, mb: 4}}/>
                 </Container>
             </ThemeProvider>
         );

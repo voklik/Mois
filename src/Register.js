@@ -40,7 +40,7 @@ class Login extends Component {
             };
 
             fetch("http://localhost:8080/rest/api/auth/signup", requestOptions)
-                .then(response => console.log(response));
+                .then();
         };
 
         return (
@@ -72,7 +72,7 @@ class Login extends Component {
                                             required
                                             fullWidth
                                             id="firstName"
-                                            label="First name"
+                                            label="Jméno"
                                             name="firstName"
                                             autoComplete="firstName"
                                             autoFocus
@@ -84,7 +84,7 @@ class Login extends Component {
                                             required
                                             fullWidth
                                             id="lastName"
-                                            label="Last name"
+                                            label="Příjmení"
                                             name="lastName"
                                             autoComplete="lastName"
                                         />
@@ -107,7 +107,7 @@ class Login extends Component {
                                         required
                                         fullWidth
                                         id="phoneNumber"
-                                        label="Phone number"
+                                        label="Telefon"
                                         name="phoneNumber"
                                         autoComplete="phoneNumber"
                                     />
@@ -119,7 +119,7 @@ class Login extends Component {
                                             required
                                             fullWidth
                                             id="postCode"
-                                            label="Post code"
+                                            label="PSČ"
                                             name="postCode"
                                             autoComplete="postCode"
                                         />
@@ -130,7 +130,7 @@ class Login extends Component {
                                             required
                                             fullWidth
                                             id="city"
-                                            label="City"
+                                            label="Město"
                                             name="city"
                                             autoComplete="city"
                                         />
@@ -142,7 +142,7 @@ class Login extends Component {
                                         required
                                         fullWidth
                                         id="street"
-                                        label="Street"
+                                        label="Ulice"
                                         name="street"
                                         autoComplete="street"
                                     />
@@ -154,7 +154,7 @@ class Login extends Component {
                                         required
                                         fullWidth
                                         id="password"
-                                        label="Password"
+                                        label="Heslo"
                                         name="password"
                                     />
                                 </Grid>
@@ -165,13 +165,13 @@ class Login extends Component {
                                         required
                                         fullWidth
                                         id="confirmPassword"
-                                        label="Confirm password"
+                                        label="Potvrďte heslo"
                                         name="confirmPassword"
                                     />
                                 </Grid>
                             </Grid>
                             <FormControlLabel
-                                control={<Checkbox required color="primary" />}
+                                control={<Checkbox required={true} color="primary" />}
                                 label="Kliknutím zde potvrzuji, že jsem byl seznámen/a a souhlasím s pravidly a podmínkami."
                             />
                             <Button
