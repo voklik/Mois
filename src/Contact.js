@@ -5,13 +5,8 @@ import Paper from '@mui/material/Paper';
 
 import Copyright from './components/Copyright';
 
-class Contact extends Component {
+const Contact = () => {
 
-    componentDidMount() {
-        document.title = "Kontakty | FimTravel Agency";
-    }
-
-    render() {
         return (
             <Container maxWidth="lg" sx={{mt: 4, mb: 4}}>
                 <Grid container spacing={3}>
@@ -50,7 +45,7 @@ class Contact extends Component {
                 <Copyright sx={{pt: 4}}/>
             </Container>
         )
-    }
+
 
 }
 

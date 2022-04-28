@@ -1,12 +1,11 @@
-import React, { Component } from 'react'
+import React     from 'react'
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 
-class Copyright extends Component {
+function Copyright(props) {
 
-    render() {
         return (
-            <Typography variant="body2" color="text.secondary" align="center" {...this.props}>
+            <Typography variant="body2" color="text.secondary" align="center" {...props}>
                 {'SPHH© '}
                 <Link color="inherit" href="/">
                     FimTravel Agency
@@ -15,7 +14,6 @@ class Copyright extends Component {
                 {'.'}
             </Typography>
         );
-    }
 
 }
 

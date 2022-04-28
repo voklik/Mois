@@ -7,9 +7,8 @@ import Home from './Home'
 import Layout from './components/Layout';
 import Contact from "./Contact";
 
-class App extends Component {
+const App = () => {
 
-    render() {
         return (
             <BrowserRouter>
                 <Routes>
@@ -22,7 +21,7 @@ class App extends Component {
                     </Route>
                 </Routes>
             </BrowserRouter>);
-    }
+
 
 }
 

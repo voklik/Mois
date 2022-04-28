@@ -1,7 +1,10 @@
 import * as React from 'react';
+import {Link} from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
 import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
+
+import ListItemText from '@mui/material/ListItemText';
 import MuiDrawer from '@mui/material/Drawer';
 import Box from '@mui/material/Box';
 import MuiAppBar from '@mui/material/AppBar';
@@ -14,10 +17,12 @@ import Badge from '@mui/material/Badge';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import Link from "@mui/material/Link";
 import Container from "@material-ui/core/Container";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
+
+import { MenuItems } from './MenuItems';
+import Copyright from "./Copyright";
 
 const drawerWidth = 240;
 
@@ -65,10 +70,9 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
     }),
 );
 
-const mdTheme = createTheme();
-
-function Layout() {
+const LayoutContent = () => {
     const [open, setOpen] = React.useState(true);
+    const mdTheme = createTheme();
     const toggleDrawer = () => {
         setOpen(!open);
     };
@@ -102,13 +106,13 @@ function Layout() {
                             noWrap
                             sx={{ flexGrow: 1 }}
                         >
-                            FimTravel Agency
+                            Dashboard
                         </Typography>
-                        <Link>
-                            <Link href="/login" style={{ color: '#FFF' }}>
-                                Přihlášení / Registrace
-                            </Link>
-                        </Link>
+                        <IconButton color="inherit">
+                            <Badge badgeContent={4} color="secondary">
+                                <NotificationsIcon />
+                            </Badge>
+                        </IconButton>
                     </Toolbar>
                 </AppBar>
                 <Drawer variant="permanent" open={open}>
@@ -126,6 +130,7 @@ function Layout() {
                     </Toolbar>
                     <Divider />
                     <List component="nav">
+                        {MenuItems}
                         <Divider sx={{ my: 1 }} />
                     </List>
                 </Drawer>
@@ -141,49 +146,50 @@ function Layout() {
                         overflow: 'auto',
                     }}
                 >
-                    <Toolbar>
-
-                        <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-                            <Grid container spacing={3}>
-                                {/* Chart */}
-                                <Grid item xs={12} md={8} lg={9}>
-                                    <Paper
-                                        sx={{
-                                            p: 2,
-                                            display: 'flex',
-                                            flexDirection: 'column',
-                                            height: 240,
-                                        }}
-                                    >
-                                    </Paper>
-                                </Grid>
-                                {/* Recent Deposits */}
-                                <Grid item xs={12} md={4} lg={3}>
-                                    <Paper
-                                        sx={{
-                                            p: 2,
-                                            display: 'flex',
-                                            flexDirection: 'column',
-                                            height: 240,
-                                        }}
-                                    >
-                                    </Paper>
-                                </Grid>
-                                {/* Recent Orders */}
-                                <Grid item xs={12}>
-                                    <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-                                        <Link href="/contact">Kontakty </Link>
-                                    </Paper>
-                                </Grid>
+                    <Toolbar />
+                    <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+                        <Grid container spacing={3}>
+                            {/* Chart */}
+                            <Grid item xs={12} md={8} lg={9}>
+                                <Paper
+                                    sx={{
+                                        p: 2,
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        height: 240,
+                                    }}
+                                >
+                                    dfsg
+                                </Paper>
                             </Grid>
-                        </Container>
-
-                    </Toolbar>
-                    <Outlet />
+                            {/* Recent Deposits */}
+                            <Grid item xs={12} md={4} lg={3}>
+                                <Paper
+                                    sx={{
+                                        p: 2,
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        height: 240,
+                                    }}
+                                >
+                                    sdafasdf
+                                </Paper>
+                            </Grid>
+                            {/* Recent Orders */}
+                            <Grid item xs={12}>
+                                <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
+                                    dsafsdf
+                                </Paper>
+                            </Grid>
+                        </Grid>
+                        <Copyright sx={{ pt: 4 }} />
+                    </Container>
                 </Box>
             </Box>
         </ThemeProvider>
     );
 }
 
-export default Layout;
+export default function Layout() {
+    return <LayoutContent />;
+}
