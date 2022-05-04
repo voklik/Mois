@@ -52,7 +52,7 @@ const UserDetail = () => {
     const [user, setUser] = useState(userInitial);
     useEffect(() => {
         getUser();
-    }, [])
+    }, [user])
 
     const getUser = () => {
         let credentials = Auth.getCredentials();
@@ -65,23 +65,47 @@ const UserDetail = () => {
             }
         };
 
+
         fetch(`http://localhost:8080/rest/api/users/${id}`, requestOptions)
             .then(result => {
                 result.json()
                     .then(data =>
-                        setUser(data)
+                            setUser(data)
                     )
             })
     }
 
+    const handleSwitchActive = (event) => {
+        event.preventDefault();
+
+        let credentials = Auth.getCredentials();
+
+        let requestOptions = {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": credentials.jwt
+            }
+        };
+
+        fetch(`http://localhost:8080/rest/api/users/deactive/${id}`, requestOptions)
+            .then(result => {
+                result.json()
+                    .then(data =>
+                        user.active = data.active
+                    )
+            })
+    }
+    
     return (
         <Container maxWidth="lg" sx={{mt: 4, mb: 4}}>
             <Grid container spacing={3}>
                 <Grid container xs={12} md={12} lg={12}>
                     <Stack spacing={2} direction="row">
                         <Button variant="outlined" onClick={handleChangePageUsers}>List uživatelů</Button>
-                        <Button variant="contained">Deaktivovat uživatele</Button>
-                        <Button variant="contained">ADMIN</Button>
+                        <Button variant="contained" onClick={handleSwitchActive}>
+                            {user.active ? "Zneaktivnit uživatele" : "Zaktivovat uživatele" }
+                        </Button>
                     </Stack>
                 </Grid>
 
