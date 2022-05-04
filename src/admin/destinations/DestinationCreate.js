@@ -12,6 +12,7 @@ import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 
 import Auth from '../../services/AuthService';
+import Box from "@mui/material/Box";
 
 const DestinationCreate = () => {
 
@@ -109,109 +110,53 @@ const DestinationCreate = () => {
                         {/*<Button variant="contained" onSubmit={handleSubmit}>Vytvořit destinaci</Button>*/}
                     </Stack>
                 </Grid>
-                <Grid item xs={12} md={12} lg={12}>
-                    <Paper
-                        sx={{
-                            p: 2,
-                            display: 'flex',
-                            flexDirection: 'column',
-                            height: 360,
-                        }}
-                    >
-                        <Typography component="h2" variant="h6" color="primary" gutterBottom>
-                            {"Vytvoření destinace"}
-                        </Typography>
-                        <Stack spacing={2} direction="row">
-                            <Stack spacing={2} direction="column">
-                                <Grid item xs={12} md={12} lg={12}>
-                                    <TextField
-                                        id="outlined-disabled"
-                                        label="Název"
-                                    />
-                                </Grid>
+                <Box component="form" onSubmit={handleSubmit}>
+                    <Grid item xs={12} md={12} lg={12}>
+                        <Paper
+                            sx={{
+                                p: 2,
+                                display: 'flex',
+                                flexDirection: 'column',
+                                height: 480,
+                            }}
+                        >
+                            <Typography component="h2" variant="h6" color="primary" gutterBottom>
+                                {"Vytvoření destinace"}
+                            </Typography>
+                            <Stack spacing={3} direction="row">
+                                <Stack spacing={1} direction="column">
+                                    <Grid item xs={12} md={12} lg={12}>
+                                        <TextField
+                                            id="outlined-disabled"
+                                            label="Název"
+                                        />
+                                    </Grid>
 
-                                <Grid item xs={12} md={12} lg={12}>
-                                    <TextField
-                                        id="outlined-multiline-static"
-                                        label="Popis"
-                                        multiline
-                                        rows={3}
-                                    />
-                                </Grid>
-                            </Stack>
-                            <Stack spacing={2} direction="column">
-                                <Grid item xs={12} md={12} lg={12}>
-                                    <TextField
-                                        id="outlined-disabled"
-                                        label="Email"
-                                    />
-                                </Grid>
-                                <Grid item xs={12} md={12} lg={12}>
-                                    <TextField
-                                        id="outlined-disabled"
-                                        label="Telefonní číslo"
-                                    />
-                                </Grid>
-                            </Stack>
-                        </Stack>
-                    </Paper>
-                </Grid>
-
-                <Grid item xs={12} md={6} lg={6}>
-                    <Paper
-                        sx={{
-                            p: 2,
-                            display: 'flex',
-                            flexDirection: 'column',
-                            height: 240,
-                        }}
-                    >
-                        <Typography component="h2" variant="h6" color="primary" gutterBottom>
-                            {"Adresa"}
-                        </Typography>
-                        <Grid container xs={12} md={12} lg={12}>
-                            <Grid container spacing={3}>
-                                <Grid item xs={4} md={4} lg={4}>
-                                    <InputLabel id="country-id">Země</InputLabel>
-                                    <Select
-                                        id="outlined-disabled"
-                                        labelId="country-id"
-                                        label="Stát"
-                                    />
-                                    {
-                                        countriesSelect.map(
-                                            country => {
-                                                return (
-                                                    <MenuItem value={country.id}>{country.name}</MenuItem>
-                                                )
-                                            }
-                                        )
-                                    }
-                                </Grid>
-                                <Grid item xs={4} md={4} lg={4}>
-                                    <InputLabel id="destination-type-id">Typ destinace</InputLabel>
-                                    <Select
-                                        id="outlined-disabled"
-                                        labelId="destination-type-id"
-                                        value="1"
-                                        label="Typ destinace"
-                                    />
-                                    {
-                                        destinationTypesSelect.map(
-                                            destinationType => {
-                                                return (
-                                                    <MenuItem
-                                                        value={destinationType.id}>{destinationType.name}
-                                                    </MenuItem>
-                                                )
-                                            }
-                                        )
-                                    }
-                                </Grid>
-                            </Grid>
-                            <Grid container>
-                                <Grid container spacing={3}>
-                                    <Grid item xs={2} md={2} lg={2}>
+                                    <Grid item xs={12} md={12} lg={12}>
+                                        <TextField
+                                            id="outlined-multiline-static"
+                                            label="Popis"
+                                            multiline
+                                            rows={3}
+                                        />
+                                    </Grid>
+                                </Stack>
+                                <Stack spacing={1} direction="column">
+                                    <Grid item xs={12} md={12} lg={12}>
+                                        <TextField
+                                            id="outlined-disabled"
+                                            label="Email"
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12} md={12} lg={12}>
+                                        <TextField
+                                            id="outlined-disabled"
+                                            label="Telefonní číslo"
+                                        />
+                                    </Grid>
+                                </Stack>
+                                <Stack spacing={1} direction="column">
+                                    <Grid item xs={5} md={5} lg={5}>
                                         <TextField
                                             id="outlined-disabled"
                                             label="PSČ"
@@ -231,38 +176,55 @@ const DestinationCreate = () => {
                                             label="Ulice"
                                         />
                                     </Grid>
-                                </Grid>
-                            </Grid>
-                        </Grid>
-                    </Paper>
-                </Grid>
-                <Grid item xs={12} md={4} lg={4}>
-                    <Paper
-                        sx={{
-                            p: 2,
-                            display: 'flex',
-                            flexDirection: 'column',
-                            height: 240,
-                        }}
-                    >
-                        <Typography component="h2" variant="h6" color="primary" gutterBottom>
-                            {"Kontakty"}
-                        </Typography>
-                        <Grid item xs={12} md={12} lg={12}>
-                            <TextField
-                                id="outlined-disabled"
-                                label="Email"
-                            />
-                        </Grid>
-                        <Grid item xs={12} md={12} lg={12}>
-                            <TextField
-                                id="outlined-disabled"
-                                label="Telefonní číslo"
-                            />
-                        </Grid>
-                    </Paper>
-                    <Button variant="contained" type="submit">Vytvořit destinaci</Button>
-                </Grid>
+                                </Stack>
+                                <Stack spacing={1} direction="column">
+                                    <Grid item xs={4} md={4} lg={4}>
+                                        <InputLabel id="country-id">Země</InputLabel>
+                                        <Select
+                                            id="outlined-disabled"
+                                            labelId="country-id"
+                                            label="Stát"
+                                        />
+                                        {
+                                            countriesSelect.map(
+                                                country => {
+                                                    return (
+                                                        <MenuItem value={country.id}>{country.name}</MenuItem>
+                                                    )
+                                                }
+                                            )
+                                        }
+                                    </Grid>
+                                </Stack>
+                                <Stack>
+                                    <Grid item xs={4} md={4} lg={4}>
+                                        <InputLabel id="destination-type-id">Typ destinace</InputLabel>
+                                        <Select
+                                            id="outlined-disabled"
+                                            labelId="destination-type-id"
+                                            value="1"
+                                            label="Typ destinace"
+                                        />
+                                        {
+                                            destinationTypesSelect.map(
+                                                destinationType => {
+                                                    return (
+                                                        <MenuItem
+                                                            value={destinationType.id}>{destinationType.name}
+                                                        </MenuItem>
+                                                    )
+                                                }
+                                            )
+                                        }
+                                    </Grid>
+                                </Stack>
+                                <Stack>
+                                    <Button variant="contained" type="submit">Vytvořit destinaci</Button>
+                                </Stack>
+                            </Stack>
+                        </Paper>
+                    </Grid>
+                </Box>
             </Grid>
         </Container>
     )
