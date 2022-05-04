@@ -42,7 +42,6 @@ const Contact = () => {
                         </Paper>
                     </Grid>
                 </Grid>
-                <Copyright sx={{pt: 4}}/>
             </Container>
         )
 

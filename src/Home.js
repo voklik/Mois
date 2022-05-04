@@ -1,9 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
-
-import Copyright from './components/Copyright';
 
 const Home = () => {
 
@@ -42,7 +40,6 @@ const Home = () => {
                         </Paper>
                     </Grid>
                 </Grid>
-                <Copyright sx={{pt: 4}}/>
             </Container>
         )
 
