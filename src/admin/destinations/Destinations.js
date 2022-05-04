@@ -6,6 +6,7 @@ import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
+import TextField from '@mui/material/TextField';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
@@ -79,6 +80,14 @@ const Destinations = () => {
             <Grid container xs={12} md={12} lg={12}>
                 <Stack spacing={2} direction="row">
                     <Button variant="outlined" onClick={handleChangePageDestinations}>Formulář pro přidání destinace</Button>
+
+                    <TextField
+                        id="dest-search"
+                        label="Název destinace"
+                        type="search"
+                        variant="standard"
+                    />
+
                 </Stack>
             </Grid>
             <TableContainer sx={{ maxHeight: 440 }}>

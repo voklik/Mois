@@ -13,21 +13,16 @@ import AuthService from '../services/AuthService'
 
 export const MenuItems = () => {
 
-
-    const role = AuthService.getCredentials().role;
-    const adminMenu = () => {
-        return(<ListItemButton>
-            <ListItemIcon>
-                <DashboardIcon />
-            </ListItemIcon>
-            <Link to="/admin/users">
-                <ListItemText primary="Uživatelé" />
-            </Link>
-        </ListItemButton>)
-    }
-
     const menu = (
         <React.Fragment>
+            <ListItemButton>
+                <ListItemIcon>
+                    <DashboardIcon />
+                </ListItemIcon>
+                <Link to="/admin/users">
+                    <ListItemText primary="Uživatelé" />
+                </Link>
+            </ListItemButton>
             <ListItemButton>
                 <ListItemIcon>
                     <ShoppingCartIcon />
@@ -65,10 +60,7 @@ export const MenuItems = () => {
 
     return (
         <React.Fragment>
-            {adminMenu}
             {menu}
-
-
         </React.Fragment>
     )
 }
