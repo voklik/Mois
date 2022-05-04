@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Outlet } from 'react-router-dom';
+import {Link, Outlet} from 'react-router-dom';
 import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 
@@ -19,6 +19,7 @@ import Container from "@material-ui/core/Container";
 
 import { MenuItems } from './MenuItems';
 import Copyright from "./Copyright";
+import ListItemButton from "@mui/material/ListItemButton";
 
 const drawerWidth = 240;
 
@@ -104,11 +105,9 @@ const LayoutContent = () => {
                         >
                             Dashboard
                         </Typography>
-                        <IconButton color="inherit">
-                            <Badge badgeContent={4} color="secondary">
-                                <NotificationsIcon />
-                            </Badge>
-                        </IconButton>
+                        <Link to="/login">
+                            Přihlášení/registrace
+                        </Link>
                     </Toolbar>
                 </AppBar>
                 <Drawer variant="permanent" open={open}>
