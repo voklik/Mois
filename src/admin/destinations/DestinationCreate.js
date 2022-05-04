@@ -65,13 +65,12 @@ const DestinationCreate = () => {
             }
         };
 
-        fetch("http://localhost:8081/rest/api/countries", requestOptions)
+        fetch("http://localhost:8081/rest/api/countries/", requestOptions)
             .then(result => {
-                console.log(result);
                 result.json()
                     .then(data =>
                         setCountriesSelect(data)
-                    );
+                    )
             });
     }
     return (

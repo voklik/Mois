@@ -56,7 +56,10 @@ const Destinations = () => {
         fetch(`http://localhost:8080/rest/api/destinations/${page}/${rowsPerPage}`, requestOptions)
             .then((result => {
                 result.json().then((data) => {
-                    setDestinations(data.content);
+                    if(data.content.length !== 0)
+                        setDestinations(data.content);
+                    else
+                        setDestinations([]);
                 });
             }));
     }
@@ -81,20 +84,20 @@ const Destinations = () => {
                     <TableBody>
                         {
                             destinations.map((destination) => {
-                                if(!!destination) {
-                                    return (
-                                        <TableRow hover role="checkbox" tabIndex={-1} key={destination.email}>
-                                            {
-                                                columns.map((column) => {
-                                                    const value = destination[column.id];
-                                                    if(column.id !== 'control-elements')
-                                                        return (
-                                                            <TableCell key={column.id} align={column.align}>
-                                                                {column.format && typeof value === 'boolean'
-                                                                    ? column.format(value)
-                                                                    : value}
-                                                            </TableCell>
-                                                        );
+                                return (
+                                    <TableRow hover role="checkbox" tabIndex={-1} key={destination.email}>
+                                        {
+                                            columns.map((column) => {
+                                                const value = destination[column.id];
+                                                if(column.id !== 'control-elements')
+                                                    return (
+                                                        <TableCell key={column.id} align={column.align}>
+                                                            {column.format && typeof value === 'boolean'
+                                                                ? column.format(value)
+                                                                : value}
+                                                        </TableCell>
+                                                    );
+                                                if(!!destination)
                                                     return (
                                                         <TableCell key={column.id} align={column.align}>
                                                             <Link to={`/admin/destinations/${destination.id}`}>
@@ -102,11 +105,12 @@ const Destinations = () => {
                                                             </Link>
                                                         </TableCell>
                                                     );
-                                                })
-                                            }
-                                        </TableRow>
-                                    );}
-                            })}
+                                            })
+                                        }
+                                    </TableRow>
+                                );
+                            })
+                        }
                     </TableBody>
                 </Table>
             </TableContainer>

@@ -126,7 +126,7 @@ const LayoutContent = () => {
                     </Toolbar>
                     <Divider />
                     <List component="nav">
-                        {MenuItems}
+                        <MenuItems/>
                         <Divider sx={{ my: 1 }} />
                     </List>
                 </Drawer>

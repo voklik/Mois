@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {Link} from 'react-router-dom'
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
@@ -8,37 +9,66 @@ import PeopleIcon from '@mui/icons-material/People';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import LayersIcon from '@mui/icons-material/Layers';
 
-export const MenuItems = (
-    <React.Fragment>
-        <ListItemButton>
+import AuthService from '../services/AuthService'
+
+export const MenuItems = () => {
+
+
+    const role = AuthService.getCredentials().role;
+    const adminMenu = () => {
+        return(<ListItemButton>
             <ListItemIcon>
                 <DashboardIcon />
             </ListItemIcon>
-            <ListItemText primary="Dashboard" />
-        </ListItemButton>
-        <ListItemButton>
-            <ListItemIcon>
-                <ShoppingCartIcon />
-            </ListItemIcon>
-            <ListItemText primary="Orders" />
-        </ListItemButton>
-        <ListItemButton>
-            <ListItemIcon>
-                <PeopleIcon />
-            </ListItemIcon>
-            <ListItemText primary="Customers" />
-        </ListItemButton>
-        <ListItemButton>
-            <ListItemIcon>
-                <BarChartIcon />
-            </ListItemIcon>
-            <ListItemText primary="Reports" />
-        </ListItemButton>
-        <ListItemButton>
-            <ListItemIcon>
-                <LayersIcon />
-            </ListItemIcon>
-            <ListItemText primary="Integrations" />
-        </ListItemButton>
-    </React.Fragment>
-);
+            <Link to="/admin/users">
+                <ListItemText primary="Uživatelé" />
+            </Link>
+        </ListItemButton>)
+    }
+
+    const menu = (
+        <React.Fragment>
+            <ListItemButton>
+                <ListItemIcon>
+                    <ShoppingCartIcon />
+                </ListItemIcon>
+                <Link to="/admin/destinations">
+                    <ListItemText primary="Destinace" />
+                </Link>
+            </ListItemButton>
+            <ListItemButton>
+                <ListItemIcon>
+                    <PeopleIcon />
+                </ListItemIcon>
+                <Link to="/offers">
+                    <ListItemText primary="Nabídky" />
+                </Link>
+            </ListItemButton>
+            <ListItemButton>
+                <ListItemIcon>
+                    <BarChartIcon />
+                </ListItemIcon>
+                <Link to="/my-orders">
+                    <ListItemText primary="objednávky" />
+                </Link>
+            </ListItemButton>
+            <ListItemButton>
+                <ListItemIcon>
+                    <LayersIcon />
+                </ListItemIcon>
+                <Link to="/my-orders">
+                    <ListItemText primary="Mé objednávky" />
+                </Link>
+            </ListItemButton></React.Fragment>
+    );
+
+
+    return (
+        <React.Fragment>
+            {adminMenu}
+            {menu}
+
+
+        </React.Fragment>
+    )
+}
